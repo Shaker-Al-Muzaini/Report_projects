@@ -1,6 +1,6 @@
 git init
 git.
-git add
+git add *
 git commit -m-"shaker"
 git push.
 //ss
