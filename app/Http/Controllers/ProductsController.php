@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\sections;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $sections=sections::all();
+        $Products=Products::all();
+        return view('Products.Products' ,compact('Products','sections'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,16 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        Products::create([
+            'Product_name' => $request->Product_name,
+            'section_id' => $request->section_id,
+            'description' => $request->description,
+        ]);
+        session()->flash('Add', 'تم اضافة المنتج بنجاح ');
+        return redirect('/products');
+
     }
 
     /**

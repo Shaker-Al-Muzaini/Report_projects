@@ -24,4 +24,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/{page}', [AdminController::class,'index']);
+Route::get('home/inovices', [App\Http\Controllers\CanterController::class, 'index'])->name('home/inovices');
+Route::get('home/Sections', [App\Http\Controllers\SectionsController::class, 'index'])->name('home/Sections');
+Route::get('Products', [App\Http\Controllers\ProductsController::class, 'index'])->name('Products');
+Route::post('sections/store', [App\Http\Controllers\SectionsController::class, 'store'])->name('sections/store');
+Route::post('sections/update', [App\Http\Controllers\SectionsController::class, 'update'])->name('sections/update');
+Route::post('sections/destroy', [App\Http\Controllers\SectionsController::class, 'destroy'])->name('sections/destroy');
+Route::get('/{page}', [AdminController::class,'index']);
+
