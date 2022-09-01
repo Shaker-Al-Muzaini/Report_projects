@@ -17,77 +17,47 @@ class ProductsController extends Controller
         return view('Products.Products' ,compact('Products','sections'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function create(): void
     {
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
 
 
         Products::create([
-            'Product_name' => $request->Product_name,
+            'product_name' => $request->product_name,
             'section_id' => $request->section_id,
             'description' => $request->description,
         ]);
         session()->flash('Add', 'تم اضافة المنتج بنجاح ');
-        return redirect('/products');
+        return redirect('/Products');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Products $products)
+
+    public function show(Products $products): void
+    {
+
+    }
+
+
+    public function edit(Products $products): void
+    {
+
+    }
+
+
+    public function update(Request $request, Products $products): void
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Products $products)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Products $products)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Products $products)
+    public function destroy(Products $products): void
     {
         //
     }

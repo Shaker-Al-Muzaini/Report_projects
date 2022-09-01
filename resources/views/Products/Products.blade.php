@@ -178,12 +178,16 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @php
+                            $i=0;
+                            @endphp
                             @foreach($Products as $Product)
+                               @php $i++ @endphp
                                 <tr>
-                                    <td>{{$Product->id}}</td>
+                                    <td>{{$i}}</td>
                                     <td>{{$Product->product_name}}</td>
+                                    <td>{{$Product->section->section_name}}</td>
                                     <td>{{$Product->description}}</td>
-                                    <td>{{$Product->section_id}}</td>
                                     <td>d</td>
 
                                 </tr>
@@ -205,8 +209,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
-                        {{csrf_field()}}
+                    <form action="{{URL('Products/store')}}" method="post">
+                        @csrf
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">اسم المنتج</label>

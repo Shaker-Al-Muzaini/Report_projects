@@ -11,11 +11,20 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     use HasFactory;
-    protected $fillable=[
-        'id',
-        'product_name',
-        'description',
-        'section_id',
-    ];
+//    protected $fillable=[
+//        'id',
+//        'product_name',
+//        'description',
+//        'section_id',
+//    ];
+//تسخدام  بدلها الي فوق
+protected $guarded= [];
+
+public  function section  (): \Illuminate\Database\Eloquent\Relations\BelongsTo
+{
+    return $this->belongsTo(sections::class);
+
+}
+
 
 }

@@ -30,5 +30,8 @@ Route::get('Products', [App\Http\Controllers\ProductsController::class, 'index']
 Route::post('sections/store', [App\Http\Controllers\SectionsController::class, 'store'])->name('sections/store');
 Route::post('sections/update', [App\Http\Controllers\SectionsController::class, 'update'])->name('sections/update');
 Route::post('sections/destroy', [App\Http\Controllers\SectionsController::class, 'destroy'])->name('sections/destroy');
+
+Route::post('Products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('Products/store');
+
 Route::get('/{page}', [AdminController::class,'index']);
 

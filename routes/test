@@ -1,14 +1,15 @@
 git init
 git.
-git add *
+git add .
 git commit -m-"shaker"
-git push.
+git pull --rebase
+git push
+s
 //ss
 git init
 git remote add origin https.....
 git  pull origin master
 composer  install
-
 git  pull origin main
 
 
