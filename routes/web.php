@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CanterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SectionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +27,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('home/inovices', [App\Http\Controllers\CanterController::class, 'index'])->name('home/inovices');
-Route::get('home/Sections', [App\Http\Controllers\SectionsController::class, 'index'])->name('home/Sections');
-Route::get('Products', [App\Http\Controllers\ProductsController::class, 'index'])->name('Products');
-Route::post('sections/store', [App\Http\Controllers\SectionsController::class, 'store'])->name('sections/store');
-Route::post('sections/update', [App\Http\Controllers\SectionsController::class, 'update'])->name('sections/update');
-Route::post('sections/destroy', [App\Http\Controllers\SectionsController::class, 'destroy'])->name('sections/destroy');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('home/inovices', [CanterController::class, 'index'])->name('home/inovices');
+Route::get('home/Sections', [SectionsController::class, 'index'])->name('home/Sections');
+Route::post('sections/store', [SectionsController::class, 'store'])->name('sections/store');
+Route::post('sections/update', [SectionsController::class, 'update'])->name('sections/update');
+Route::post('sections/destroy', [SectionsController::class, 'destroy'])->name('sections/destroy');
 
-Route::post('Products/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('Products/store');
+Route::get('Products', [ProductsController::class, 'index'])->name('Products');
+Route::post('Products/store', [ProductsController::class, 'store'])->name('Products/store');
+Route::Post('Products/update',[ProductsController::class,'update'])->name('Products/update');
+Route::post('Products/destroy', [ProductsController::class, 'destroy'])->name('sections/destroy');
 
 Route::get('/{page}', [AdminController::class,'index']);
+
 

@@ -12,8 +12,8 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $sections=sections::all();
-        $Products=Products::all();
+        $sections=sections::select('id','section_name')->get();
+        $Products=Products::latest()->select('id','product_name','description','section_id')->get();
         return view('Products.Products' ,compact('Products','sections'));
     }
 
@@ -42,6 +42,7 @@ class ProductsController extends Controller
     public function show(Products $products): void
     {
 
+
     }
 
 
@@ -51,14 +52,28 @@ class ProductsController extends Controller
     }
 
 
-    public function update(Request $request, Products $products): void
+    public function update(Request $request)
     {
-        //
+        $id = sections::where('section_name', $request->section_name)->first()->id;
+        $Products = Products::findOrFail($request->pro_id);
+        $Products->update([
+            'Product_name' => $request->Product_name,
+            'description' => $request->description,
+            'section_id' => $id,
+        ]);
+        $r=session()->flash('Edit', 'تم تعديل المنتج بنجاح');
+//        dd($Products)->toArry();
+        dd($id)->toArry();
+
+//        return redirect('/Products');
     }
 
 
-    public function destroy(Products $products): void
+    public function destroy(Request $request): \Illuminate\Http\RedirectResponse
     {
-        //
+        $Products = Products::findOrFail($request->pro_id);
+        $Products->delete();
+        session()->flash('delete', 'تم حذف المنتج بنجاح');
+        return back();
     }
 }

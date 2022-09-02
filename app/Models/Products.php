@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static create(array $array)
+ * @method static select(string $string)
+ * @method static latest()
+ * @method static findOrFail(mixed $pro_id)
  */
 class Products extends Model
 {
