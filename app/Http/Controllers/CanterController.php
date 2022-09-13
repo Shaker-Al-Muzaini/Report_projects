@@ -2,7 +2,7 @@
  
 namespace App\Http\Controllers; 
      
-use App\Models\canter; 
+use App\Models\canter;  
 use Illuminate\Http\Request;
 
 class CanterController extends Controller 
