@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
    
-return [ 
+return [  
  
     /* 
     |--------------------------------------------------------------------------
